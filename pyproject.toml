@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aware_server"
+version = "0.1.0"
+description = "Server for receiving data from the Aware app"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+    "flask",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+]
+
+[tool.setuptools]
+packages = ["aware_server"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
