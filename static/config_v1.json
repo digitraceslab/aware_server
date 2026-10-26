@@ -1,0 +1,234 @@
+{
+  "_id": "PolPilot",
+  "study_info": {
+    "study_title": "PolPilot",
+    "study_description": "Pilot study for POLEMIC / POLWELL",
+    "researcher_first": "",
+    "researcher_last": "",
+    "researcher_contact": "jarno.rantaharju@aalto.fi"
+  },
+  "createdAt": "",
+  "updatedAt": "2025-09-25T12:30:13.411Z",
+  "questions": [
+    {
+      "id": 1,
+      "esm_type": 3,
+      "esm_title": "Q1: how are you u?",
+      "esm_submit": "Submit",
+      "esm_checkboxes": [
+        "good",
+        "ok",
+        "bad"
+      ],
+      "esm_notification_timeout": 600
+    },
+    {
+      "id": 2,
+      "esm_type": 4,
+      "esm_title": "How many hours did you sleep last night",
+      "esm_submit": "Submit",
+      "esm_likert_max": 24,
+      "esm_likert_max_label": "24",
+      "esm_likert_min_label": "",
+      "esm_notification_timeout": 600
+    }
+  ],
+  "schedules": [
+    {
+      "type": "repeat",
+      "title": "Q1: how are you u?",
+      "esm_keep": "true",
+      "questions": [
+        1,
+        2
+      ],
+      "repeatInterval": 86400
+    }
+  ],
+  "sensors": [
+    {
+      "setting": "status_webservice",
+      "value": "true"
+    },
+    {
+      "setting": "webservice_server",
+      "value": "https://aware.cs.aalto.fi/v1/check/"
+    },
+    {
+      "value": 30,
+      "setting": "fallback_network"
+    },
+    {
+      "value": "false",
+      "setting": "remind_to_charge"
+    },
+    {
+      "value": "true",
+      "setting": "foreground_priority"
+    },
+    {
+      "value": "true",
+      "setting": "debug_flag"
+    },
+    {
+      "value": 60,
+      "setting": "frequency_sync_config"
+    },
+    {
+      "value": "true",
+      "setting": "enable_config_update"
+    },
+    {
+      "value": "true",
+      "setting": "communication"
+    },
+    {
+      "value": "true",
+      "setting": "status_communication_events"
+    },
+    {
+      "value": "true",
+      "setting": "status_calls"
+    },
+    {
+      "value": "true",
+      "setting": "status_messages"
+    },
+    {
+      "value": "true",
+      "setting": "status_applications"
+    },
+    {
+      "value": "true",
+      "setting": "status_installations"
+    },
+    {
+      "value": "false",
+      "setting": "status_notifications"
+    },
+    {
+      "value": 30,
+      "setting": "frequency_applications"
+    },
+    {
+      "value": "true",
+      "setting": "status_screentext"
+    },
+    {
+      "value": "true",
+      "setting": "status_battery"
+    },
+    {
+      "value": "true",
+      "setting": "status_screen"
+    },
+    {
+      "value": "true",
+      "setting": "status_timezone"
+    },
+    {
+      "value": 200000,
+      "setting": "frequency_timezone"
+    },
+    {
+      "value": "true",
+      "setting": "status_accelerometer"
+    },
+    {
+      "value": 200000,
+      "setting": "frequency_accelerometer"
+    },
+    {
+      "value": 1,
+      "setting": "threshold_accelerometer"
+    },
+    {
+      "value": "true",
+      "setting": "frequency_accelerometer_enforce"
+    },
+    {
+      "value": "true",
+      "setting": "status_linear_accelerometer"
+    },
+    {
+      "value": 200000,
+      "setting": "frequency_linear_accelerometer"
+    },
+    {
+      "value": 0,
+      "setting": "threshold_linear_accelerometer"
+    },
+    {
+      "value": "true",
+      "setting": "frequency_linear_accelerometer_enforce"
+    },
+    {
+      "value": "true",
+      "setting": "status_location_gps"
+    },
+    {
+      "value": "false",
+      "setting": "status_location_network"
+    },
+    {
+      "value": 180,
+      "setting": "frequency_gps"
+    },
+    {
+      "value": 0,
+      "setting": "min_location_gps_accuracy"
+    },
+    {
+      "value": 60,
+      "setting": "frequency_location_gps"
+    },
+    {
+      "value": 1500,
+      "setting": "min_location_network_accuracy"
+    },
+    {
+      "value": 300,
+      "setting": "location_expiration_time"
+    },
+    {
+      "value": "true",
+      "setting": "status_location_passive"
+    },
+    {
+      "value": "true",
+      "setting": "location_save_all"
+    },
+    {
+      "value": "false",
+      "setting": "status_screenshot"
+    },
+    {
+      "value": 5,
+      "setting": "capture_time_interval"
+    },
+    {
+      "value": 20,
+      "setting": "compress_rate"
+    },
+    {
+      "value": "false",
+      "setting": "status_screenshot_local_storage"
+    },
+    {
+      "value": false,
+      "setting": "status_esm"
+    },
+    {
+      "value": false,
+      "setting": "status_plugin_ambient_noise"
+    },
+    {
+      "value": false,
+      "setting": "status_plugin_openweather"
+    },
+    {
+      "value": "",
+      "setting": "plugin_openweather_api_key"
+    }
+  ]
+}
