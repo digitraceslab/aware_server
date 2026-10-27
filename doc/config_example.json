@@ -9,42 +9,8 @@
   },
   "createdAt": "",
   "updatedAt": "2025-09-25T12:30:13.411Z",
-  "questions": [
-    {
-      "id": 1,
-      "esm_type": 3,
-      "esm_title": "Q1: how are you u?",
-      "esm_submit": "Submit",
-      "esm_checkboxes": [
-        "good",
-        "ok",
-        "bad"
-      ],
-      "esm_notification_timeout": 600
-    },
-    {
-      "id": 2,
-      "esm_type": 4,
-      "esm_title": "How many hours did you sleep last night",
-      "esm_submit": "Submit",
-      "esm_likert_max": 24,
-      "esm_likert_max_label": "24",
-      "esm_likert_min_label": "",
-      "esm_notification_timeout": 600
-    }
-  ],
-  "schedules": [
-    {
-      "type": "repeat",
-      "title": "Q1: how are you u?",
-      "esm_keep": "true",
-      "questions": [
-        1,
-        2
-      ],
-      "repeatInterval": 86400
-    }
-  ],
+  "questions": [],
+  "schedules": [],
   "sensors": [
     {
       "setting": "status_webservice",
