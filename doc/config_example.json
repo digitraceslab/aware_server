@@ -41,7 +41,7 @@
       "setting": "frequency_sync_config"
     },
     {
-      "value": "true",
+      "value": "false",
       "setting": "enable_config_update"
     },
     {
