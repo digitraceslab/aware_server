@@ -13,7 +13,8 @@ RUN_USER="${RUN_USER:-aware}"
 DOMAIN="${DOMAIN:-$(_env_get DOMAIN)}"
 SSL_CERT="${SSL_CERT:-$(_env_get SSL_CERT)}"
 SSL_KEY="${SSL_KEY:-$(_env_get SSL_KEY)}"
-SSL_CHAIN="${SSL_CHAIN:-$(_env_get SSL_CHAIN)}"INSTALL_CONFIGS="${INSTALL_CONFIGS:-yes}"  # first-time setup always installs the rendered configs
+SSL_CHAIN="${SSL_CHAIN:-$(_env_get SSL_CHAIN)}"
+INSTALL_CONFIGS="${INSTALL_CONFIGS:-yes}"  # first-time setup always installs the rendered configs
 
 # shellcheck source=lib.sh
 source "$(dirname "$(readlink -f "$0")")/lib.sh"
