@@ -1,0 +1,14 @@
+[Unit]
+Description=aware-server gunicorn
+After=network.target
+
+[Service]
+User=@RUN_USER@
+Group=@RUN_USER@
+UMask=077
+WorkingDirectory=@APP_DIR@
+ExecStart=@APP_DIR@/venv/bin/gunicorn --workers 3 --timeout 120 --bind unix:/run/aware/aware-server.sock 'aware_server.app:create_app()'
+RuntimeDirectory=aware
+
+[Install]
+WantedBy=multi-user.target
