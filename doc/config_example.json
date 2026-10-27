@@ -1,11 +1,11 @@
 {
-  "_id": "PolPilot",
+  "_id": "Example id",
   "study_info": {
-    "study_title": "PolPilot",
-    "study_description": "Pilot study for POLEMIC / POLWELL",
+    "study_title": "Study title",
+    "study_description": "Study description",
     "researcher_first": "",
     "researcher_last": "",
-    "researcher_contact": "jarno.rantaharju@aalto.fi"
+    "researcher_contact": "example@example.com"
   },
   "createdAt": "",
   "updatedAt": "2025-09-25T12:30:13.411Z",

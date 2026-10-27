@@ -37,6 +37,11 @@ def create_app() -> Flask:
         response.headers["Cache-Control"] = "no-store"
         return response
 
+    @app.get("/")
+    def health():
+        """Answer the monitoring probe with an empty 200."""
+        return "", 200
+
     if dotenv_values(ENV_FILE).get("DEBUG") == "True":
 
         @app.route("/", defaults={"path": ""}, methods=CATCH_ALL_METHODS)
