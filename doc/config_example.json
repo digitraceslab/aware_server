@@ -14,7 +14,7 @@
   "sensors": [
     {
       "setting": "status_webservice",
-      "value": "true"
+      "value": true
     },
     {
       "setting": "webservice_server",
@@ -25,15 +25,15 @@
       "setting": "fallback_network"
     },
     {
-      "value": "false",
+      "value": false,
       "setting": "remind_to_charge"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "foreground_priority"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "debug_flag"
     },
     {
@@ -41,35 +41,35 @@
       "setting": "frequency_sync_config"
     },
     {
-      "value": "false",
+      "value": false,
       "setting": "enable_config_update"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "communication"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_communication_events"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_calls"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_messages"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_applications"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_installations"
     },
     {
-      "value": "false",
+      "value": false,
       "setting": "status_notifications"
     },
     {
@@ -77,19 +77,19 @@
       "setting": "frequency_applications"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_screentext"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_battery"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_screen"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_timezone"
     },
     {
@@ -97,7 +97,7 @@
       "setting": "frequency_timezone"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_accelerometer"
     },
     {
@@ -109,11 +109,11 @@
       "setting": "threshold_accelerometer"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "frequency_accelerometer_enforce"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_linear_accelerometer"
     },
     {
@@ -125,15 +125,15 @@
       "setting": "threshold_linear_accelerometer"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "frequency_linear_accelerometer_enforce"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_location_gps"
     },
     {
-      "value": "false",
+      "value": false,
       "setting": "status_location_network"
     },
     {
@@ -157,15 +157,15 @@
       "setting": "location_expiration_time"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "status_location_passive"
     },
     {
-      "value": "true",
+      "value": true,
       "setting": "location_save_all"
     },
     {
-      "value": "false",
+      "value": false,
       "setting": "status_screenshot"
     },
     {
@@ -177,7 +177,7 @@
       "setting": "compress_rate"
     },
     {
-      "value": "false",
+      "value": false,
       "setting": "status_screenshot_local_storage"
     },
     {
