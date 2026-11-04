@@ -52,7 +52,8 @@ def create_app() -> Flask:
 
         Any failure answers 500, which makes the app keep the rows and retry. Only
         the error type and number are logged: database messages can quote row values.
-        With DEBUG on, stored uploads are logged too, without their rows.
+        With DEBUG on, stored uploads are logged too, without their rows, and a
+        failed upload's full request is logged.
         """
         try:
             rows = json.loads(request.form["data"])
@@ -62,6 +63,8 @@ def create_app() -> Flask:
                 "Insert failed: version=%d label=%s table=%s error=%s errno=%s",
                 version, label, table, type(err).__name__, getattr(err, "errno", None),
             )
+            if env.get("DEBUG") == "True":
+                app.logger.info("Failed insert request: form=%s", request.form.to_dict())
             # Read by table_commands. These errors only come from the database, so
             # the rows have been parsed by then.
             if getattr(err, "errno", None) in MISSING_TABLE_ERRNOS:
