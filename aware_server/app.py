@@ -11,7 +11,7 @@ from pathlib import Path
 from dotenv import dotenv_values
 from flask import Flask, request, send_from_directory
 
-from aware_server.db import db_config, insert_upload
+from aware_server.db import DEVICE_COLUMN_KINDS, DEVICE_TABLE, db_config, insert_upload
 from aware_server.table_commands import column_kinds
 
 CONFIG_DIR = Path(__file__).resolve().parent.parent / "static"
@@ -66,11 +66,15 @@ def create_app() -> Flask:
             if env.get("DEBUG") == "True":
                 app.logger.info("Failed insert request: form=%s", request.form.to_dict())
             # Read by table_commands. These errors only come from the database, so
-            # the rows have been parsed by then.
+            # the rows have been parsed by then. The aware_device step marks its
+            # errors, and that table's columns are fixed rather than uploaded.
             if getattr(err, "errno", None) in MISSING_TABLE_ERRNOS:
+                if getattr(err, "table", None) == DEVICE_TABLE:
+                    missing, kinds = DEVICE_TABLE, DEVICE_COLUMN_KINDS
+                else:
+                    missing, kinds = table, column_kinds(rows)
                 app.logger.info(
-                    "Missing table: table=%s columns=%s",
-                    table, json.dumps(column_kinds(rows)),
+                    "Missing table: table=%s columns=%s", missing, json.dumps(kinds),
                 )
             return "", 500
         if env.get("DEBUG") == "True":

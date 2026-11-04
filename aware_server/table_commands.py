@@ -14,7 +14,7 @@ import json
 import re
 import sys
 
-from aware_server.db import LABEL_TABLE, quote_identifier
+from aware_server.db import quote_identifier
 
 LOG_LINE = re.compile(r"Missing table: table=(\S+) columns=(\{.*\})")
 INT_TEXT = re.compile(r"-?(0|[1-9]\d*)")
@@ -90,23 +90,11 @@ def create_table_command(table: str, columns: dict) -> str:
     return f"CREATE TABLE IF NOT EXISTS {target} (\n    {body}\n);"
 
 
-def label_table_command() -> str:
-    """Build the CREATE TABLE command for the device label table."""
-    return (
-        f"CREATE TABLE IF NOT EXISTS `{LABEL_TABLE}` (\n"
-        "    `device_id` VARCHAR(255) NOT NULL,\n"
-        "    `label` VARCHAR(255) NOT NULL,\n"
-        "    PRIMARY KEY (`device_id`, `label`)\n"
-        ");"
-    )
-
-
 def main() -> None:
     """Print the commands for the tables named in the log on standard input."""
-    print(label_table_command())
     for table, columns in sorted(read_log(sys.stdin).items()):
         try:
-            print(f"\n{create_table_command(table, columns)}")
+            print(f"{create_table_command(table, columns)}\n")
         except ValueError:
             # The endpoint is public, so the log can hold names sent by anyone.
             print(f"Skipped {table}: invalid table or column name", file=sys.stderr)
