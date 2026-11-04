@@ -20,6 +20,20 @@ CATCH_ALL_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE"]
 # MySQL errors for a missing table: 1146 is no such table, and a login without a
 # grant on the table gets 1142 whether or not the table exists.
 MISSING_TABLE_ERRNOS = (1142, 1146)
+# Characters of an unparsable upload kept in the debug log.
+RAW_EXAMPLE_LENGTH = 200
+
+
+def example_rows(data: str) -> str:
+    """Shorten uploaded rows to the first one, as an example for the debug log."""
+    try:
+        rows = json.loads(data)
+    except ValueError:
+        return data[:RAW_EXAMPLE_LENGTH]
+    if not isinstance(rows, list) or not rows:
+        return data[:RAW_EXAMPLE_LENGTH]
+    more = ", ...]" if len(rows) > 1 else "]"
+    return f"[{json.dumps(rows[0])}{more}"
 
 
 def create_app() -> Flask:
@@ -53,7 +67,7 @@ def create_app() -> Flask:
         Any failure answers 500, which makes the app keep the rows and retry. Only
         the error type and number are logged: database messages can quote row values.
         With DEBUG on, stored uploads are logged too, without their rows, and a
-        failed upload's full request is logged.
+        failed upload is logged with the full error message and its first row.
         """
         try:
             rows = json.loads(request.form["data"])
@@ -64,7 +78,11 @@ def create_app() -> Flask:
                 version, label, table, type(err).__name__, getattr(err, "errno", None),
             )
             if env.get("DEBUG") == "True":
-                app.logger.info("Failed insert request: form=%s", request.form.to_dict())
+                app.logger.info(
+                    "Failed insert request: table=%s error=%s: %s device_id=%s data=%s",
+                    table, type(err).__name__, err, request.form.get("device_id"),
+                    example_rows(request.form.get("data", "")),
+                )
             # Read by table_commands. These errors only come from the database, so
             # the rows have been parsed by then. The aware_device step marks its
             # errors, and that table's columns are fixed rather than uploaded.
