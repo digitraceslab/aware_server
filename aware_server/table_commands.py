@@ -14,7 +14,7 @@ import json
 import re
 import sys
 
-from aware_server.db import LABEL_TABLE, TABLE_SUFFIX, quote_identifier
+from aware_server.db import LABEL_TABLE, quote_identifier
 
 LOG_LINE = re.compile(r"Missing table: table=(\S+) columns=(\{.*\})")
 INT_TEXT = re.compile(r"-?(0|[1-9]\d*)")
@@ -86,7 +86,7 @@ def create_table_command(table: str, columns: dict) -> str:
         definitions.append(f"{quote_identifier(column)} {column_type}")
     definitions.append("INDEX `device_timestamp` (`device_id`, `timestamp`)")
     body = ",\n    ".join(definitions)
-    target = quote_identifier(table + TABLE_SUFFIX)
+    target = quote_identifier(table)
     return f"CREATE TABLE IF NOT EXISTS {target} (\n    {body}\n);"
 
 

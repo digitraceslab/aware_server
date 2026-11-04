@@ -1,15 +1,14 @@
 """MySQL storage for uploaded rows.
 
 The login is INSERT only, so the tables must already exist and nothing here can
-read them back. Rows go to `<table>_https`, keeping them apart from the tables
-of the same name that the app writes to directly.
+read them back. Rows go to the table named in the upload, the same tables the
+app writes to directly.
 """
 
 import re
 
 import mysql.connector
 
-TABLE_SUFFIX = "_https"
 LABEL_TABLE = "device_label_https"
 IDENTIFIER = re.compile(r"[A-Za-z0-9_]+")
 
@@ -50,7 +49,7 @@ def insert_upload(config: dict, label: str, table: str, device_id: str, rows: li
 
     Raises on any failure, in which case nothing is stored.
     """
-    target = quote_identifier(table + TABLE_SUFFIX)
+    target = quote_identifier(table)
     groups = group_by_columns(rows)
 
     conn = mysql.connector.connect(**config)
