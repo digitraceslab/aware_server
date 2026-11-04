@@ -81,15 +81,17 @@ def create_app() -> Flask:
         @app.route("/", defaults={"path": ""}, methods=CATCH_ALL_METHODS)
         @app.route("/<path:path>", methods=CATCH_ALL_METHODS)
         def catch_all(path: str):
-            """Log any other request and answer 200 without storing anything.
+            """Log any other request and answer 404 without storing anything.
 
-            Development only: the log holds full request contents.
+            The error makes the app keep the rows and retry, so nothing sent to an
+            unhandled route is lost. Development only: the log holds full request
+            contents.
             """
             app.logger.info(
                 "Unhandled request: %s /%s from %s args=%s form=%s body=%s",
                 request.method, path, request.remote_addr, request.args.to_dict(),
                 request.form.to_dict(), request.get_data(as_text=True) if not request.form else "",
             )
-            return "", 200
+            return "", 404
 
     return app
